@@ -30,7 +30,7 @@ export default class Services extends LightningElement {
     upsellFieldInfo({ data, error }) {
         if (data) this.upsellOptions = data.values;
     }
-    renderedCallback(evenet){
+    renderedCallback(event){
         if (this.isErrorFromFlow) {
             console.log('this.isInputValid---'+this.isInputValid);
             console.log('this.hasValue---'+this.hasValue);
