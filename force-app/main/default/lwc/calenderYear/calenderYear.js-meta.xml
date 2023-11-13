@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordAction</target>
+        <target>lightning__Tab</target>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="salesexpected" type="Integer" label="salesexpected"
+                description="To check error fired during flow navigation" />
+            <property name="calendarOptions" type="String" label="calendarOptions"
+                description="To check error fired during flow navigation" />
+            <property name="isErrorFromFlow" type="Boolean" label="isErrorFromFlow"
+                description="To check error fired during flow navigation" />
+            <property name="q1" type="Integer" label="q1"
+                description="This will have the label name of the field" />
+            <property name="q2" type="Integer" label="q2"
+                description="This will have the label name of the field" />
+            <property name="q3" type="Integer" label="q3"
+                description="This will have the label name of the field" />
+            <property name="q4" type="Integer" label="q4"
+                description="This will have the label name of the field" />
+            <property name="selectedOption" type="Integer" label="selectedOption"
+                description="This will have the label name of the field" />
+            <property name="forecastType" type="String" label="forecastType"
+                description="This will have the label name of the field" />
+                <property name="manufacturing" type="String" label="manufacturing"
+                description="This will have the label name of the field" />
+                <property name="manufacturing1" type="Integer" label="manufacturing1"
+                description="This will have the label name of the field" />
+                <property name="laboratory" type="Integer" label="laboratory"
+                description="This will have the label name of the field" />
+                <property name="qty" type="Integer" label="qty"
+                description="This will have the label name of the field" />
+                <property name="unitRate" type="Integer" label="unitRate"
+                description="This will have the label name of the field" />
+                
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

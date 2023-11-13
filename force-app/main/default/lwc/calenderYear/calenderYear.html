@@ -1,0 +1,39 @@
+<template>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-p-horizontal_x-small">
+            <!--<lightning-combobox
+            name="progress"
+            label="Calendar Year"
+            value={selectedOption}
+            placeholder="Select Progress"
+            options={options}
+            onchange={handleChange} ></lightning-combobox>-->
+            
+            <lightning-combobox
+            required
+            name="Calendar year"
+            label="Calendar year"
+            value={calOption}
+            options={calendarOptions1}
+            onchange={handleChange}>
+        </lightning-combobox>
+        </div>
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-p-horizontal_x-small"></div>
+        
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-p-horizontal_x-small">
+            <lightning-input type="text" label="CY Q1 [Jan-Feb-Mar]" class='q1' required={q1required} disabled={disableinput1} onchange={q1Change} value={q1}></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-p-horizontal_medium">
+                <lightning-input type="text" label="CY Q2 [Apr-May-Jun]" class='q2' required={q2required} disabled={disableinput2} onchange={q2Change} value={q2}></lightning-input>
+            </div>          
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-p-horizontal_x-small slds-p-left_small">
+                <lightning-input type="text" label="CY Q3 [Jul-Aug-Sep]" class='q3' required={q3required} disabled={disableinput3} onchange={q3Change} value={q3}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_6-of-12 slds-p-horizontal_medium">
+                    <lightning-input type="text" label="CY Q4 [Oct-Nov-Dec]" class='q4' required={q4required} disabled={disableinput4} onchange={q4Change} value={q4}></lightning-input>
+                </div>
+                <p if:true={errorMessageHtml} style="color:#FF0000;">Calendar Year Qtly Revenue Split total should not be more then Calendar Year Sales Expected</p>
+                <p if:true={greaterErrorMessageHtml} style="color:#FF0000;">Calendar Year Qtly Revenue Split total should not be less then Calendar Year Sales Expected</p>
+        </div>
+    
+</template>

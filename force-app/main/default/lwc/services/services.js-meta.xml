@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<apiVersion>57.0</apiVersion>
+	<isExposed>true</isExposed>
+	<targets>
+		<target>lightning__RecordPage</target>
+		<target>lightning__AppPage</target>
+		<target>lightning__HomePage</target>
+		<target>lightning__Tab</target>
+		<target>lightning__FlowScreen</target>
+		<target>lightningCommunity__Page</target>
+	</targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="isRequiredField" type="Boolean" label="isRequiredField" role="inputOnly" description="Contains whether this field is required or not" />
+            <property name="isErrorFromFlow" type="Boolean" label="isErrorFromFlow" description="To check error fired during flow navigation" />
+            <property name="isInputValid" type="Boolean" label="isInputValid" description="To check any invalid input error" />
+            <property name="messageIfEmpty" label="messageIfEmpty" type="String" role="inputOnly" />
+            <property name="messageIfInvalid" label="messageIfInvalid" type="String" role="inputOnly" />
+            <property name="relatedType" label="relatedType" type="String" role="inputOnly" description="This will have the input type for this field" />
+            <property name="valueEntered" label="valueEntered" type="String" description="The text value provided and returned from the control" />
+            <property name="serviceSubTypevalueEntered" label="serviceSubTypevalueEntered" type="String" description="The text value provided and returned from the control" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

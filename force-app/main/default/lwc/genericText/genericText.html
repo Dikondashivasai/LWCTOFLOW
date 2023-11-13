@@ -1,0 +1,21 @@
+<template>
+    <lightning-input
+        placeholder={placeholderText}
+        type={relatedType}
+        name={labelName}
+        label={labelName}
+        required={isRequiredField}
+        value={valueEntered}
+        onchange={handleText}
+        message-when-pattern-mismatch={messageIfInvalid}
+        min={minValue}
+        max={maxValue}
+        max-length={maxLength}
+        onkeydown={handleKeyDown}
+        step={step} 
+        field-level-help={toolTipText} 
+        formatter={formatter}
+        pattern={validationExpression}
+        disabled={disableInput}></lightning-input>
+</template>
+        

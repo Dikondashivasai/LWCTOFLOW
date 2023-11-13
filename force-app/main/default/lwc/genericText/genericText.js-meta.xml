@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>GenericText</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="relatedType" label="relatedType" type="String" role="inputOnly" description="This will have the input type for this field" />
+            <property name="labelName" type="String" label="labelName" role="inputOnly" description="This will have the label name of the field" />
+            <property name="isRequiredField" type="Boolean" label="isRequiredField" role="inputOnly" description="Contains whether this field is required or not" />
+            <property name="valueEntered" label="valueEntered" type="String" description="The text value provided and returned from the control" />
+            <property name="valueEnteredNum" label="valueEnteredNum" type="Integer" description="The Number value provided and returned from the control" />
+            <property name="isErrorFromFlow" type="Boolean" label="isErrorFromFlow" description="To check error fired during flow navigation" />
+            <property name="isInputValid" type="Boolean" label="isInputValid" description="To check any invalid input error" />
+            <property name="messageIfEmpty" label="messageIfEmpty" type="String" role="inputOnly" />
+            <property name="messageIfInvalid" label="messageIfInvalid" type="String" role="inputOnly" />
+            <property name="validationExpression" label="validationExpression" type="String" role="inputOnly" />
+            <property name="placeholderText" label="placeholderText" type="String" role="inputOnly" />
+            <property name="disableInput" label="Disable" type="Boolean" role="inputOnly" />
+            <property name="hasValue" label="Has Value" type="Boolean" role="outputOnly" />
+            <property name="formatter" label="Formatter" type="String" role="inputOnly" />
+            <property name="step" label="Decimal Step" type="String" role="inputOnly" />
+            <property name="toolTipText" label="toolTipText" type="String" role="inputOnly" />
+            <property name="unitRate" label="unit Rate" type="String" />
+            <property name="qty" label="qty" type="String"  />
+            <property name="manufacturing" label="manufacturing" type="String" />
+            <property name="laboratory" label="laboratory" type="String"/>
+            <property name="totalcy" label="totalcy" type="String"/>
+            <property name="serviceType" label="serviceType" type="String"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

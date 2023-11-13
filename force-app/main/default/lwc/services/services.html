@@ -1,0 +1,68 @@
+<template>
+    <lightning-combobox name="Service Type"
+    label="Service Type	"
+    options={upsellOptions}
+    placeholder="--None--"
+    required={isRequiredField}
+    type={relatedType}
+    message-when-pattern-mismatch={messageIfInvalid}
+    value={valueEntered}
+    
+    onchange={handleUpsellChange}>
+</lightning-combobox>
+<lightning-combobox name="Service Sub Type	"
+                        label="Service Sub Type	"
+                        placeholder="--None--"
+                        options={slaOptions}
+                        value ={servicesubtypevalueEntered}
+                        onchange={handleservice}>
+    </lightning-combobox>
+    <!-- <template if:false={isfalse}>
+        <c-generic-text service-value={setservicevalue}></c-generic-text>
+        </template> -->
+
+</template>
+
+
+<!-- <template>
+		<lightning-record-edit-form object-api-name="Prospect__c">
+			<div class="slds-m-around_medium" >
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_2-of-3">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="Service_Type__c">
+                                <abbr class="slds-required" title="required">* </abbr>Service Type</label>                   
+                                <lightning-input-field field-name ="Service_Type__c" onchange={changeServiceType} required variant="label-hidden"></lightning-input-field>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="serviceSubType">Service Sub Type</label> 
+                                <lightning-input-field field-name="Service_Sub_Type__c" variant="label-hidden"></lightning-input-field> 
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="totalSales">
+                                    <abbr class="slds-required" title="required">* </abbr>Total CYs Sales Expected</label> 
+                                <lightning-input-field field-name="Total_CYs_Sales_Expected__c" value={cySales} disabled={isTotalSales} onchange={changeTotal} variant="label-hidden"></lightning-input-field> 
+                            </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="unitRate">
+                                <template if:true={isunit}>
+                                    <abbr class="slds-required" title="required">* </abbr>
+                                </template>
+                                Unit Rate</label> 
+                            <lightning-input-field field-name="Unit_Rate__c" value={unit} required={isunit} onchange={changeUnit} variant="label-hidden"></lightning-input-field> 
+                        </div>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="qtyKgs">
+                                <template if:true={isqty}>
+                                    <abbr class="slds-required" title="required">* </abbr>
+                                </template>
+                               Qty in Kgs</label>  
+                            <lightning-input-field field-name="Qty_in_Kgs__c" value={qty} required={isqty} onchange={changeQty} variant="label-hidden"></lightning-input-field>
+                        </div>
+                    </div>
+                    </div>	
+			</div>
+		</lightning-record-edit-form>
+</template> -->
