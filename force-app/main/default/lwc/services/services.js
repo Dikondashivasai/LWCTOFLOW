@@ -17,7 +17,7 @@ export default class Services extends LightningElement {
     @api serviceSubTypevalueEntered ='';
     @track isfalse =false;
     context = createMessageContext();
-    setservicevalue= this.valueEntered
+    // setservicevalue= this.valueEntered
     @wire(getObjectInfo, {objectApiName: Prospect_OBJECT })
     ProspectInfo; 
     @track slaOptions;
@@ -32,8 +32,8 @@ export default class Services extends LightningElement {
     }
     renderedCallback(event){
         if (this.isErrorFromFlow) {
-            console.log('this.isInputValid---'+this.isInputValid);
-            console.log('this.hasValue---'+this.hasValue);
+            // console.log('this.isInputValid---'+this.isInputValid);
+            // console.log('this.hasValue---'+this.hasValue);
             let errorMessage = '';
             if (!this.isInputValid && this.hasValue) {
                 errorMessage = this.messageIfInvalid;
@@ -54,11 +54,14 @@ export default class Services extends LightningElement {
         // this.slaOptions = this.slaFieldData.values.filter(opt => opt.validFor.includes(key));
         this.valueEntered=event.target.value;
         this.isErrorFromFlow=false;
-        setservicevalue= this.valueEntered
+        // setservicevalue= this.valueEntered
     this.publishMC();   
     }
     handleservice(event){
         this.serviceSubTypevalueEntered = event.target.value;
+        this.valueEntered = this.serviceSubTypevalueEntered
+        this.publishMC();   
+
     }
     publishMC() {
         
