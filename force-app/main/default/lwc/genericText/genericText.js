@@ -37,7 +37,7 @@ export default class GenericText extends LightningElement {
     }
     connectedCallback() {
         if(this.isErrorFromFlow && this.labelName=="Reasons"){
-            this.isRequiredField=true;  
+        this.isRequiredField=true;  
         }
 
         //this.isErrorFromFlow =false;
@@ -48,39 +48,16 @@ export default class GenericText extends LightningElement {
         }
         if ((!this.relatedType || this.relatedType === 'text') && !this.maxLength) this.maxLength = 255;
         this.subscribeMC();
-        //console.log('112');
-        /*if(this.labelName=='Unit Rate'){
-            //this.unitRate=this.valueEnteredNum;
-            this.publishMC();
-        }
-        if(this.labelName=='Qty (in Kgs)'){
-            //this.qty=this.valueEnteredNum;
-            this.publishMC();
-        }
-        if(this.labelName=='Manufacturing Component'){
-            //this.manufacturing=this.valueEnteredNum;
-            this.publishMC();
-        }
-        if(this.labelName=='Laboratory Component'){
-            //this.laboratory=this.valueEnteredNum;
-            this.publishMC();
-        }*/
     }
     renderedCallback() {
         //alert(this.totalcy);
         console.log('this.labelName---'+this.labelName);
         console.log('this.labelName---'+this.isErrorFromFlow);
-       //if(this.labelName!='Unit Rate' && this.labelName!='Qty (in Kgs)' && this.labelName!="Total CY's Sales Expected")
         this.publishMC();
-        //console.log('unitRate');
-        //console.log(this.unitRate);
-        //console.log(this.valueEnteredNum);
-        //console.log(this.isErrorFromFlow);
-        //console.log(this.isErrorFromFlow);
         this.dispatchEvent(new FlowAttributeChangeEvent('hasValue', this.hasValue));
         if (this.isErrorFromFlow) {
-            //console.log('this.isInputValid---'+this.isInputValid);
-            //console.log('this.hasValue---'+this.hasValue);
+            console.log('this.isInputValid---'+this.isInputValid);
+            console.log('this.hasValue---'+this.hasValue);
             let errorMessage = '';
             if (!this.isInputValid && this.hasValue) {
                 errorMessage = this.messageIfInvalid;
@@ -159,12 +136,13 @@ export default class GenericText extends LightningElement {
             
             if(message.sourceSystem=='Probability%' && message.messageToSend<75){
                 if(this.labelName=="Reasons"){
-                    //console.log('message.sourceSystem'+message.sourceSystem)
+                    console.log('message.sourceSystem'+message.sourceSystem)
+                    // this.valueEntered = message.messageToSend
                     this.isRequiredField=true;
                 }
             }else if(message.sourceSystem=='Probability%' && message.messageToSend>=75){
                 if(this.labelName=="Reasons"){
-                    //console.log('message.sourceSystem1')
+                    console.log('message.sourceSystem1')
                     this.isRequiredField=false;
                 }
             }

@@ -24,7 +24,7 @@ export default class Services extends LightningElement {
     @track upsellOptions;
     @wire(getPicklistValues, {recordTypeId: '$ProspectInfo.data.defaultRecordTypeId', fieldApiName: ServiceSubType_FIELD })
     slaFieldInfo({ data, error }) {
-        if (data) this.slaOptions = data.values;
+        if (data) this.slaFieldData = data;
     }
     @wire(getPicklistValues, {recordTypeId:'$ProspectInfo.data.defaultRecordTypeId', fieldApiName: ServiceType_FIELD })
     upsellFieldInfo({ data, error }) {
@@ -32,8 +32,6 @@ export default class Services extends LightningElement {
     }
     renderedCallback(event){
         if (this.isErrorFromFlow) {
-            // console.log('this.isInputValid---'+this.isInputValid);
-            // console.log('this.hasValue---'+this.hasValue);
             let errorMessage = '';
             if (!this.isInputValid && this.hasValue) {
                 errorMessage = this.messageIfInvalid;
@@ -49,19 +47,17 @@ export default class Services extends LightningElement {
         genericCmp.reportValidity();
     }
     handleUpsellChange(event) {
-        
-        // let key = this.slaFieldData.controllerValues[event.target.value];
-        // this.slaOptions = this.slaFieldData.values.filter(opt => opt.validFor.includes(key));
+        let key = this.slaFieldData.controllerValues[event.target.value];
+        this.slaOptions = this.slaFieldData.values.filter(opt => opt.validFor.includes(key));
         this.valueEntered=event.target.value;
         this.isErrorFromFlow=false;
-        // setservicevalue= this.valueEntered
     this.publishMC();   
     }
     handleservice(event){
         this.serviceSubTypevalueEntered = event.target.value;
-        this.valueEntered = this.serviceSubTypevalueEntered
-        this.publishMC();   
-
+        // this.valueEntered = this.serviceSubTypevalueEntered
+        // this.isErrorFromFlow=false;
+        // this.publishMC();   
     }
     publishMC() {
         
@@ -91,101 +87,10 @@ export default class Services extends LightningElement {
                 return { isValid: true };
             }
         }
-        //console.log('this.valueEntered---came');
-        console.log('se')
         this.isErrorFromFlow = true;
         return {
             isValid: false,
             errorMessage: ''
         };
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // @track serviceManufacturing ='MANUFACTURING'
-    // @track picklistValues = [];
-    // @track service
-    // @track unit
-    // @track qty
-    // @track cySales
-    // @track isunit = false
-    // @track isqty= false
-    // @track isTotalSales =false
-    // @track serviceType
-
-    // // @wire(getPicklistValues, {
-    // //     recordTypeId: '$objectInfo.data.defaultRecordTypeId', // Replace with the appropriate record type ID
-    // //     fieldApiName: NAME_FIELD
-    // // })
-    // // wiredPicklistValues({ data, error }) {
-    // //     if (data) {
-    // //         this.picklistValues = data.values;
-    // //     } else if (error) {
-    // //         console.error('Error loading picklist values', error);
-    // //     }
-    // // }
-    
-
-    // changeServiceType(e){
-    //     this.service = e.target.value;
-    //     if(this.service == this.serviceManufacturing){
-    //         this.isunit= true
-    //         this.isqty= true
-    //     }
-    //     else{
-    //         this.isunit= false
-    //         this.isqty= false
-    //         this.isTotalSales = false
-    //         this.cySales =''
-    //         this.qty=''
-    //         this.unit =''
-
-    //     }
-    // }
-    // changeUnit(e){
-    // this.unit = e.target.value
-    // }
-    // changeQty(e){
-    // this.qty = e.target.value
-    // if(this.service == this.serviceManufacturing){
-    //     this.cySales = ((this.unit)*(this.qty))
-    //     this.isTotalSales =true
-    // }else{
-    //     this.cySales =''
-    //     this.isTotalSales =false
-    // }
-    // }
-    // changeTotal(event){
-    //     if(this.isunit == true && this.isqty == true){
-    //         const input = ((this.unit)*(this.qty))
-    //         this.cySales = input
-    //         this.isTotalSales =true
-    //     }
-    //     else(this.service !=this.serviceManufacturing)
-    //     {
-    //             this.isTotalSales = false
-    //             this.cySales = event.target.value
-    //         }
-    //     }
     }

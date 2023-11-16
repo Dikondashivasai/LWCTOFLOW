@@ -7,20 +7,15 @@
     type={relatedType}
     message-when-pattern-mismatch={messageIfInvalid}
     value={valueEntered}
-    
     onchange={handleUpsellChange}>
 </lightning-combobox>
 <lightning-combobox name="Service Sub Type	"
                         label="Service Sub Type	"
-                        placeholder="--None--"
                         options={slaOptions}
+                        placeholder="--None--"
                         value ={servicesubtypevalueEntered}
                         onchange={handleservice}>
     </lightning-combobox>
-    <!-- <template if:false={isfalse}>
-        <c-generic-text service-value={setservicevalue}></c-generic-text>
-        </template> -->
-
 </template>
 
 
