@@ -135,7 +135,7 @@ renderedCallback() {
                 q4value=true;
             }
             }
-        if(this.selectedOption==null || this.selectedOption=='' || typeof this.selectedOption=='undefined'){
+        if(this.selectedOption==null || this.selectedOption==''|| typeof this.selectedOption=='undefined'){
             let genericCmp = this.template.querySelector('lightning-combobox');
             genericCmp.reportValidity();
          
@@ -289,9 +289,9 @@ subscribeMC() {
         this.manufacturing=message.messageToSend;
         this.manufacturing1=this.manufacturing;
     }
-    if(message.sourceSystem=='Laboratory Component'){
-        this.laboratory=message.messageToSend;
-    }
+    // if(message.sourceSystem=='Laboratory Component'){
+    //     this.laboratory=message.messageToSend;
+    // }
     
     if(this.forecastType=='manufacturing'){
         //console.log('man');
@@ -311,11 +311,12 @@ subscribeMC() {
             this.salesexpected=this.manufacturing;
         }
     }
-    if(this.forecastType=='laboratory'){
-        if(typeof this.laboratory!=='undefined'){
-            this.salesexpected=this.laboratory;
-        }
-    }
+    // if(this.forecastType=='laboratory'){
+    //     if(typeof this.laboratory!=='undefined'){
+    //         this.salesexpected=this.laboratory;
+    //     }
+    // }
+    
     /*if(typeof this.manufacturing==='undefined' && typeof this.laboratory==='undefined'){
         this.salesexpected=this.unitRate*this.qty;
     }else if(typeof this.manufacturing!=='undefined' && typeof this.laboratory!=='undefined'){
