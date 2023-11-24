@@ -31,6 +31,8 @@
             <property name="laboratory" label="laboratory" type="String"/>
             <property name="totalcy" label="totalcy" type="String"/>
             <property name="serviceType" label="serviceType" type="String"/>
+            <property name="prospectType" label="prospectType" type="String" />
+            <property name="displaytrue" label="displaytrue" type="Boolean" default="true" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

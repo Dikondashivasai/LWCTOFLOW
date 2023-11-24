@@ -289,34 +289,39 @@ subscribeMC() {
         this.manufacturing=message.messageToSend;
         this.manufacturing1=this.manufacturing;
     }
-    // if(message.sourceSystem=='Laboratory Component'){
-    //     this.laboratory=message.messageToSend;
-    // }
+    if(message.sourceSystem=='Laboratory Component'){
+        this.laboratory=message.messageToSend;
+    }
     
     if(this.forecastType=='manufacturing'){
         //console.log('man');
         //console.log('man'+this.totalcy);
         
-        if(this.serviceType!='Manufacturing' && typeof this.totalcy!=='undefined' && this.totalcy!=='' && this.totalcy!==null){
+        // if(this.serviceType!='Manufacturing' && typeof this.totalcy!=='undefined' && this.totalcy!=='' && this.totalcy!==null){
             
-            this.salesexpected=this.totalcy;
-        }
-        else if(typeof this.manufacturing==='undefined' || this.manufacturing==='' || this.manufacturing===null){
+        //     this.salesexpected=this.totalcy;
+        // }
+        // else if(typeof this.manufacturing==='undefined' || this.manufacturing==='' || this.manufacturing===null){
             
-            //console.log('man1');
-            this.salesexpected=this.unitRate*this.qty;
-        }
-        else if(typeof this.manufacturing!=='undefined'){
+        //     //console.log('man1');
+        //     this.salesexpected=this.unitRate*this.qty;
+        // }
+        // else if(typeof this.manufacturing!=='undefined'){
+        //     //console.log('man2');
+        //     this.salesexpected=this.manufacturing;
+        // }
+    // }
+        if(typeof this.manufacturing!=='undefined' && this.manufacturing!=='' && this.manufacturing!==null){
             //console.log('man2');
             this.salesexpected=this.manufacturing;
         }
     }
-    // if(this.forecastType=='laboratory'){
-    //     if(typeof this.laboratory!=='undefined'){
-    //         this.salesexpected=this.laboratory;
-    //     }
-    // }
-    
+    if(this.forecastType=='laboratory'){
+        if(typeof this.laboratory!=='undefined'){
+            this.salesexpected=this.laboratory;
+        }
+    }
+
     /*if(typeof this.manufacturing==='undefined' && typeof this.laboratory==='undefined'){
         this.salesexpected=this.unitRate*this.qty;
     }else if(typeof this.manufacturing!=='undefined' && typeof this.laboratory!=='undefined'){
