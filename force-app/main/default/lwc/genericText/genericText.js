@@ -38,9 +38,9 @@ export default class GenericText extends LightningElement {
         return this.relatedType !== 'number' ? this.valueEntered?.trim().length > 0 : this.valueEnteredNum != null;
     }
     connectedCallback() {
-        if(this.prospectType=="Repeat Projects from Existing customer (RE)" && this.labelName=="Manufacturing Component"){
-            this.disableInput=true;
-        }
+        // if(this.prospectType=="Repeat Projects from Existing customer (RE)" && this.labelName=="Manufacturing Component"){
+        //     this.disableInput=true;
+        // }
         if(this.isErrorFromFlow && this.labelName=="Reasons"){
         this.isRequiredField=true;  
         }
@@ -108,7 +108,7 @@ export default class GenericText extends LightningElement {
                 //         this.isRequiredField=true;
                         
                 //     } 
-                if(message.messageToSend=='Manufacturing'){
+                if(message.messageToSend=='Manufacturing'|| this.prospectType=="Commercial Project From Existing Customer (CE)"){
                     console.log('+++++++++++++'+this.prospectType)
                     if(this.labelName=='Unit Rate' || this.labelName=='Qty (in Kgs)'){
                         this.isRequiredField=true;
@@ -116,13 +116,15 @@ export default class GenericText extends LightningElement {
                     if(this.labelName=="Total CY's Sales Expected"){
                         this.disableInput=true;
                         this.isRequiredField=false;
-                    }        
+                    }
+                    if(this.labelName=="Manufacturing Component") {
+                        this.disableInput=true;
+                        this.isRequiredField=false;
+                    }       
                     
                 }else{
                     if(this.labelName=='Unit Rate' || this.labelName=='Qty (in Kgs)'){
-                        this.isRequiredField=false;
-                        
-                        
+                        this.isRequiredField=false;                        
                     }
                     if(this.labelName=="Total CY's Sales Expected"){
                         this.disableInput=false;
@@ -156,11 +158,11 @@ export default class GenericText extends LightningElement {
                     this.isRequiredField=false;
                 }
             }
-            console.log('1---')
-            console.log(this.unitRate);
-            console.log(this.qty);
-            console.log('1---'+message.sourceSystem)
-            console.log('1---'+this.labelName)
+            // console.log('1---')
+            // console.log(this.unitRate);
+            // console.log(this.qty);
+            // console.log('1---'+message.sourceSystem)
+            // console.log('1---'+this.labelName)
             if(message.sourceSystem=='Unit Rate' || message.sourceSystem=='Qty (in Kgs)'){
                 if(this.labelName=='Manufacturing Component'){
                     this.valueEntered=this.unitRate*this.qty;
@@ -168,26 +170,28 @@ export default class GenericText extends LightningElement {
             }
             if(message.sourceSystem=='Unit Rate' || message.sourceSystem=='Qty (in Kgs)'){
                 if(this.labelName=='Manufacturing Component'){
+                    this.disableInput=true;
                     this.manufacturing=this.unitRate*this.qty;
                 }
             }
             if(message.sourceSystem=='Manufacturing Component' || message.sourceSystem=='Laboratory Component'){
             if(this.labelName=="Total CY's Sales Expected"){
-                if(this.manufacturing!=null && typeof this.manufacturing!='undefined' && this.laboratory!=null && typeof this.laboratory!='undefined')
-                this.valueEntered=parseInt(this.manufacturing)+parseInt(this.laboratory);
-               else  if(this.manufacturing!=null && typeof this.manufacturing!='undefined')
+                if(this.manufacturing!=null && typeof this.manufacturing!='undefined' && this.laboratory!=null && typeof this.laboratory!='undefined'){
+                this.valueEntered=parseInt(this.manufacturing)+parseInt(this.laboratory)
+                   this.valueEnteredNum =this.valueEntered;
+                }
+               else  if(this.manufacturing!=null && typeof this.manufacturing!='undefined'){
                this.valueEntered=parseInt(this.manufacturing)
-               else  if(this.laboratory!=null && typeof this.laboratory!='undefined')
+               this.valueEnteredNum =this.valueEntered;
+               }
+               else  if(this.laboratory!=null && typeof this.laboratory!='undefined'){
                this.valueEntered=parseInt(this.laboratory)
+               this.valueEnteredNum =this.valueEntered;
+            }
             }
         }
             if(message.sourceSystem=='Unit Rate' || message.sourceSystem=='Qty (in Kgs)'){
             if(this.labelName=="Total CY's Sales Expected" && this.serviceType=='Manufacturing'){
-                //alert(this.unitRate);
-                //alert(this.qty);
-                //console.log('1--c');
-                //console.log('this.manufacturing'+this.manufacturing);
-                //console.log('this.laboratory'+this.laboratory);
                 if((typeof this.manufacturing==='undefined' || this.manufacturing=='' || this.manufacturing==null  || this.manufacturing==null || this.manufacturing==0) && (typeof this.laboratory==='undefined' || this.laboratory=='' || this.laboratory==null  || this.laboratory==null || this.laboratory==0)){
                     this.valueEntered=this.unitRate*this.qty;
                     this.valueEnteredNum =this.valueEntered;
@@ -195,11 +199,7 @@ export default class GenericText extends LightningElement {
                    // console.log('1c');
                     this.valueEntered=parseInt(this.manufacturing)+parseInt(this.laboratory);
                     this.valueEnteredNum =this.valueEntered;
-                }else if((typeof this.manufacturing==='undefined' || this.manufacturing==''   || this.manufacturing==null || this.manufacturing==0) && (typeof this.laboratory!=='undefined' && this.laboratory!='' && this.laboratory!=null)){
-                    //console.log('1');
-                    //console.log('1'+this.laboratory);
-                    //console.log('1'+this.unitRate);
-                    //console.log('1'+this.qty);
+                }else if((typeof this.manufacturing==='undefined' || this.manufacturing==''   || this.manufacturing==null || this.manufacturing==0) && (typeof this.laboratory!=='undefined' && this.laboratory!='' && this.laboratory!=null)){;
                     this.valueEntered=parseInt(this.laboratory)+(this.unitRate*this.qty);
                     this.valueEnteredNum =this.valueEntered;
                 }
